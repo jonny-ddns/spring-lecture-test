@@ -4,16 +4,14 @@ import hello.hellospring.domain.Member;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtensionContext;
-
 import java.util.List;
 
 public class MemoryMemberRepositoryTest {
-//    MemberRepository repository = new MemoryMemberRepository();
-    MemoryMemberRepository repository = new MemoryMemberRepository();
+    MemberRepository repository = new MemoryMemberRepository();
+//    MemoryMemberRepository repository = new MemoryMemberRepository();
     
     
-    //각 테스트 실시후에 메모리를 지워주도록 설정
+    //각 테스트 후에 수행할 쟉업설정
     @AfterEach
     public void afterEach(){
         clearStore();
@@ -31,8 +29,7 @@ public class MemoryMemberRepositoryTest {
         //assertEquals(예상값, 실제값)
 //        Assertions.assertEquals(member, result);
 //        Assertions.assertEquals(member, null);
-        org.assertj.core.api.Assertions.assertThat(member).isEqualTo(result);
-
+        Assertions.assertThat(member).isEqualTo(result);
     }
 
     @Test

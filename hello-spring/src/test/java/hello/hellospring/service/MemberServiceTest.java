@@ -7,8 +7,15 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+/*
+test하는 팁
+.given > when > then 순서로 진행하기
+.무엇을
+.어떤 작업을 했을때
+.어떤 결과가 나와야 한다
+ */
 
 class MemberServiceTest {
     MemberService memberService;
@@ -17,8 +24,9 @@ class MemberServiceTest {
     //매번 테스트 전 수행 - 인스턴스 새로 생성하기
     @BeforeEach
     public void beforeEach(){
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository);
+//        memberRepository = new MemoryMemberRepository();
+//        memberService = new MemberService(memberRepository);
+        memberService = new MemberService(new MemoryMemberRepository());
     }
 
     //매번 테스트 후 수행
@@ -26,12 +34,6 @@ class MemberServiceTest {
     public void afterEach(){
         memberRepository.clearStore();
     }
-
-    /*
-    test하는 팁
-    .given > when > then
-    .어떤것을 어떤조건에서 결과값
-     */
 
     @Test
     void join() {
@@ -48,19 +50,14 @@ class MemberServiceTest {
     }
 
     @Test
-    void findMembers() {
-
-    }
+    void findMembers() {    }
 
     @Test
-    void findOne() {
+    void findOne() {    }
 
-    }
-
+    //이름 중복값을 넣었을 때 정상적으로 예외가 발생하는지 확인
     @Test
     public void makeDuplicateMember(){
-        //예외가 발생하는지 확인하기
-        //given
         Member member1 = new Member();
         member1.setName("hello");
 

@@ -4,17 +4,18 @@ import hello.hellospring.domain.Member;
 import org.springframework.stereotype.Repository;
 import java.util.*;
 
-@Repository
+//@Repository 애노테이션
+//@Repository
 public class MemoryMemberRepository implements MemberRepository {
 
-    private static Map<Long, Member> store = new HashMap<>();
+    private static final Map<Long, Member> store = new HashMap<>();
     private static long sequence = 8L;      //일련번호
 
     @Override
-    public Member save(Member member) {
+    public void save(Member member) {
         member.setId(++sequence);       //일련번호 증가
         store.put(member.getId(), member);
-        return member;
+//        return member;
     }
 
     @Override
@@ -30,13 +31,14 @@ public class MemoryMemberRepository implements MemberRepository {
                     .findAny();
     }
 
+    //리스트 반환
+    //.values() --> Collection 인터페이스 객체 반환
+    //ArrayList 의 매개값으로 전달해 List로 가져올 수 있음
     @Override
-    public List<Member> findAll() {
-        return new ArrayList<>(store.values());     //컬렉션 인터페이스 반환
-    }
+    public List<Member> findAll() { return new ArrayList<>(store.values()); }
 
     @Override
     public void clearStore() {
         store.clear();
-    }   //컬렉션 비우기
+    }
 }

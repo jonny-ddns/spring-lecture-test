@@ -1,11 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Hello</title>
+    <title>hello-template</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <h1>주소창에 ?name=... 파라미터를 넣어주세요</h1>
+    <h1>파라미터 테스트</h1>
+    <h3>url에 ?name=... 파라미터를 넣어주세요</h3>
+    <br>
     <p th:text="'[parameter] : ' + ${name}">empty box</p>
 </body>
 </html>
