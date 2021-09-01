@@ -12,10 +12,10 @@ public class MemoryMemberRepository implements MemberRepository {
     private static long sequence = 8L;      //일련번호
 
     @Override
-    public void save(Member member) {
+    public Member save(Member member) {
         member.setId(++sequence);       //일련번호 증가
         store.put(member.getId(), member);
-//        return member;
+        return member;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class MemoryMemberRepository implements MemberRepository {
 
     //리스트 반환
     //.values() --> Collection 인터페이스 객체 반환
-    //ArrayList 의 매개값으로 전달해 List로 가져올 수 있음
+    //ArrayList 의 매개값으로 전달해 List 로 가져올 수 있음
     @Override
     public List<Member> findAll() { return new ArrayList<>(store.values()); }
 

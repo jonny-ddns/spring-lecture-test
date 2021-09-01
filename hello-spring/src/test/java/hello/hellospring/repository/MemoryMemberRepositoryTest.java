@@ -10,7 +10,6 @@ public class MemoryMemberRepositoryTest {
     MemberRepository repository = new MemoryMemberRepository();
 //    MemoryMemberRepository repository = new MemoryMemberRepository();
     
-    
     //각 테스트 후에 수행할 쟉업설정
     @AfterEach
     public void afterEach(){
